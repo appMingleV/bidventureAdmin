@@ -1,8 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "react-quill/dist/quill.snow.css";
-import ReactQuill from "react-quill";
+// import "react-quill/dist/quill.snow.css";
+// import ReactQuill from "react-quill";
 
 const EditAllProducts = () => {
   const [productName, setProductName] = useState("");
@@ -288,7 +288,7 @@ const EditAllProducts = () => {
         </div>
 
         {/* Description */}
-        <div className="mb-5">
+        {/* <div className="mb-5">
           <label className="block text-base font-semibold ">
             Product Description*
           </label>
@@ -299,7 +299,7 @@ const EditAllProducts = () => {
             placeholder="Write your description here"
             style={{ height: "200px", marginBottom: "10px" }} // Adjust height as needed
           />
-        </div>
+        </div> */}
 
         <div className="mb-5 pt-8">
           <label className="block text-base font-semibold">Images*</label>

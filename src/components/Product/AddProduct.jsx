@@ -1,8 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "react-quill/dist/quill.snow.css";
-import ReactQuill from "react-quill";
+// import { ReactQuill } from "react-quill";
+// import "react-quill/dist/quill.snow.css";
+// import ReactQuill from "react-quill";
 
 const AddProduct = () => {
   const [productName, setProductName] = useState("");
@@ -213,13 +214,6 @@ const AddProduct = () => {
 
         {/* Weight optinal rahega */}
 
-
-
-
-
-
-
-
         <div className="mb-5">
           <label className="block text-base font-semibold ">
             Weight ({weightUnit.toUpperCase()})
@@ -248,18 +242,13 @@ const AddProduct = () => {
 
         {/* packets  in number */}
         <div className="mb-5">
-          <label className="block text-base font-semibold">
-            Packets
-
-          </label>
-          <input type="number"
-           className="mt-2 block w-full  border border-orange-300 rounded-md focus:outline-none focus:border-blue-500 shadow-sm p-2 text-lg"
-          placeholder="Enter packets number "  />
-
+          <label className="block text-base font-semibold">Packets</label>
+          <input
+            type="number"
+            className="mt-2 block w-full  border border-orange-300 rounded-md focus:outline-none focus:border-blue-500 shadow-sm p-2 text-lg"
+            placeholder="Enter packets number "
+          />
         </div>
-
-
-
 
         {/* quantitiy */}
         <div>
@@ -288,7 +277,7 @@ const AddProduct = () => {
         </div>
 
         {/* Description */}
-        <div className="mb-5">
+        {/* <div className="mb-5">
           <label className="block text-base font-semibold ">
             Product Description*
           </label>
@@ -299,7 +288,7 @@ const AddProduct = () => {
             placeholder="Write your description here"
             style={{ height: "200px", marginBottom: "10px" }} // Adjust height as needed
           />
-        </div>
+        </div> */}
 
         <div className="mb-5 pt-8">
           <label className="block text-base font-semibold">Images*</label>
@@ -336,8 +325,6 @@ const AddProduct = () => {
                   ✕
                 </button>
               </div>
-
-
             ))}
           </div>
         </div>
