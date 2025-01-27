@@ -23,7 +23,7 @@ import AddProductSubCategories from "../components/Product/ProductCategory/AddPr
 
 // sidebar-pages
 // customers
-import Customers from "../components/customers/Customers.jsx";
+import Customers from "../components/customers/Customers.jsx";``
 import CustomersList from "../components/customers/CustomersList.jsx";
 import BuyerListCustomers from "../components/customers/BuyerListCustomers.jsx";
 //customers  action
@@ -85,8 +85,11 @@ import Settings from "../pages/Settings.jsx";
 // import SubcategoryManagement from '../components/Product/ProductCategory/SubcategoryManagement.jsx';
 import EditCategory from '../components/Product/ProductCategory/EditCategory.jsx';
 import EditSubcategory from '../components/Product/ProductCategory/EditSubcategory.jsx';
+import RestaurantList from "../components/Orders/RestaurantList.jsx";
+import CustomersHome from "../components/customers/CustomersHome.jsx";
 
-
+import RestaurantDetails from "../components/Orders/restaurantDetails.jsx";
+import EventDetails from "../components/customers/EventDetails.jsx";
 const Layout = () => {
   return (
     <>
@@ -126,13 +129,19 @@ const Layout = () => {
         <Route path="/order-pending" element={<PendingOrder />} />
         <Route path="/order-history" element={<FulfilledOrder />} />
         <Route path="/order-preview" element={<PreviewOrder />} />
+        <Route path="/restaurant-list" element={<RestaurantList />} />
+        <Route path="/restaurant-details/:id" element={<RestaurantDetails/>} />
 
         {/* <Route path="/order-active" element={<ActiveUser />} />
         <Route path="/orders/preview" element={<OrderPreviewCard />} /> */}
 
-        <Route path="/customers" element={<Customers />} />
+        {/* <Route path="/customers" element={<Customers />} />
         <Route path="/customerlist" element={<CustomersList />} />
-        <Route path="/buyerlist" element={<BuyerListCustomers />} />
+        <Route path="/buyerlist" element={<BuyerListCustomers />} /> */}
+        <Route path="/customer-homepage" element={<CustomersHome />} />
+        <Route path="/event-details/:id" element={<EventDetails />} />
+
+
         
         <Route path="/previewcustomers" element={<PreviewCustomers />} />
         <Route path="/editcustomers" element={<EditCustomers />} />

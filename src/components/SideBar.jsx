@@ -17,12 +17,22 @@ import { RiCouponFill, RiLogoutBoxFill } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 
 import "./SideBar.css";
+// import Customers from "./customers/Customers";
+// import CustomersList from "./customers/CustomersList";
+// import BuyerListCustomers from "./customers/BuyerListCustomers";
+// import EditCustomers from "./customers/EditCustomers";
+import CustomersHome from "./customers/CustomersHome";
+
+
+
 
 const SideBar = () => {
   const navigate = useNavigate();
   const [isProductsDropdownOpen, setProductsDropdownOpen] = useState(false);
   const [isDeliveryDropdownOpen, setDeliveryDropdownOpen] = useState(false);
   const [isCustomersDropdownOpen, setCustomersDropdownOpen] = useState(false); // State for Customers Management dropdown
+  const [isResturantDropdownOpen, setResturantDropdownOpen] = useState(false);
+  const [isEventDropdownOpen, setEventDropdownOpen] = useState(false);
 
   const sideBarDatas = [
     {
@@ -42,22 +52,21 @@ const SideBar = () => {
       ],
     },
     {
-      icon: (
-        <FaCartShopping style={{ fontSize: "1.25rem", color: "#ffffff" }} />
-      ),
+      icon: <FaCartShopping style={{ fontSize: "1.25rem", color: "#ffffff" }} />,
       title: "Restaurant Management",
-      link: "/order-active",
-      dropdown: [{ title: "Active Order", link: "/order-active" }],
+      link: "/restaurant-management",
+      dropdown: [{ title: "Restaurant List", link: "/restaurant-list" }],
     },
+    ,
     {
       icon: <FaUsers style={{ fontSize: "1.25rem", color: "#ffffff" }} />,
       title: "Event Management",
+      link: "/event-management",
       dropdown: [
-        { title: "Leaderboard", link: "/customers" },
-        { title: "Customer List", link: "/customerlist" },
-        { title: "Buyer List", link: "/buyerlist" },
+        { title: "Event", link: "/customer-homepage" }, 
       ],
     },
+    
     {
       icon: <MdRateReview style={{ fontSize: "1.25rem", color: "#ffffff" }} />,
       title: "Rating and Review",
@@ -137,16 +146,20 @@ const SideBar = () => {
     },
   ];
 
-  const handleProductsDropdownToggle = () => {
-    setProductsDropdownOpen(!isProductsDropdownOpen);
-  };
-
-  const handleDeliveryDropdownToggle = () => {
-    setDeliveryDropdownOpen(!isDeliveryDropdownOpen);
-  };
-
-  const handleCustomersDropdownToggle = () => {
-    setCustomersDropdownOpen(!isCustomersDropdownOpen);
+  const handleDropdownToggle = (title) => {
+    if (title === "User Management") {
+      setProductsDropdownOpen(!isProductsDropdownOpen);
+    } else if (title === "Bidding Management") {
+      setDeliveryDropdownOpen(!isDeliveryDropdownOpen);
+    } else if (title === "Restaurant Management") {
+      setResturantDropdownOpen(!isResturantDropdownOpen);
+    }
+    else if (title === "Event Management") {
+      setEventDropdownOpen(!isEventDropdownOpen);
+    }
+     else {
+      setCustomersDropdownOpen(!isCustomersDropdownOpen);
+    }
   };
 
   return (
@@ -162,50 +175,43 @@ const SideBar = () => {
                 <>
                   <div
                     className="w-full p-4 hover:bg-[#86C3D7] hover:shadow-xl flex justify-start items-center gap-2 cursor-pointer"
-                    onClick={() => {
-                      if (sideBarData.title === "User Management") {
-                        handleProductsDropdownToggle();
-                      } else if (sideBarData.title === "Bidding Management") {
-                        handleDeliveryDropdownToggle();
-                      } else {
-                        handleCustomersDropdownToggle();
-                      }
-                    }}
+                    onClick={() => handleDropdownToggle(sideBarData.title)}
                   >
                     <span>{sideBarData.icon}</span>
                     <span className="text-base">{sideBarData.title}</span>
                     <span className="ml-auto">
                       <IoMdArrowDropdown
                         style={{
-                          transform: `${
-                            (sideBarData.title === "User Management" &&
+                          transform: `${(sideBarData.title === "User Management" &&
                               isProductsDropdownOpen) ||
-                            (sideBarData.title === "Bidding Management" &&
-                              isDeliveryDropdownOpen)
+                              (sideBarData.title === "Bidding Management" &&
+                                isDeliveryDropdownOpen) ||
+                              (sideBarData.title === "Restaurant Management" &&
+                                isResturantDropdownOpen)
                               ? "rotate(180deg)"
                               : "rotate(0deg)"
-                          }`,
+                            }`,
                         }}
                       />
                     </span>
                   </div>
-                  {((sideBarData.title === "User Management" &&
-                    isProductsDropdownOpen) ||
-                    (sideBarData.title === "Bidding Management" &&
-                      isDeliveryDropdownOpen)) && (
-                    <ul className="ml-1 mt-2">
-                      {sideBarData.dropdown.map((item, i) => (
-                        <li
-                          key={i}
-                          className="pl-11 p-2 m-2 bg-[#fad9bd] text-black hover:bg-[#86C3D7] rounded-lg cursor-pointer"
-                          onClick={() => navigate(item.link)}
-                        >
-                          {item.title}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </>
+                  {((sideBarData.title === "User Management" && isProductsDropdownOpen) ||
+                    (sideBarData.title === "Bidding Management" && isDeliveryDropdownOpen) ||
+                    (sideBarData.title === "Restaurant Management" && isResturantDropdownOpen) ||
+                    (sideBarData.title === "Event Management" && isEventDropdownOpen)) && (
+                      <ul className="ml-1 mt-2">
+                        {sideBarData.dropdown.map((item, i) => (
+                          <li
+                            key={i}
+                            className="pl-11 p-2 m-2 bg-[#fad9bd] text-black hover:bg-[#86C3D7] rounded-lg cursor-pointer"
+                            onClick={() => navigate(item.link)}
+                          >
+                            {item.title}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    </>
               ) : (
                 <div
                   className="w-full p-4 hover:bg-[#86C3D7] hover:shadow-xl flex justify-start items-center gap-2 cursor-pointer"

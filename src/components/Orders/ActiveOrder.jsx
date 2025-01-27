@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ImForward } from "react-icons/im";
-import OrderNavBtns from "./OrderNavBtns.jsx";
+
 
 const ActiveOrder = () => {
   const data = [
@@ -21,18 +21,16 @@ const ActiveOrder = () => {
       totalAmount: "$90",
       status: "Active",
     },
-    // Add more mock orders as needed
+
   ];
 
   return (
     <>
-      <OrderNavBtns />
       <div>
-        {/* <h1 className="text-4xl font-semibold my-5 text-center">Active Order </h1> */}
         <h1 className="text-4xl font-bold mb-6 text-center">
-  <p className="inline  text-[#172554] px-1">Active</p>
-  <p className="inline text-[#EF8120]">Order</p>
-  </h1>
+          <p className="inline  text-[#172554] px-1">Active</p>
+          <p className="inline text-[#EF8120]">Order</p>
+        </h1>
         <div className="container mx-auto p-4">
           <div className="overflow-x-auto">
             <table className="table-auto w-full border-collapse">
@@ -45,7 +43,7 @@ const ActiveOrder = () => {
                   <th className="p-2 text-left">Total Amount</th>
                   <th className="p-2 text-left">Status</th>
                   <th className="p-2 text-left">Details</th>
-                  <th className="p-2 text-left">Assign</th> {/* New Column */}
+                  <th className="p-2 text-left">Assign</th> 
                 </tr>
               </thead>
               <tbody>

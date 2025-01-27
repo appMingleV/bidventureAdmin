@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MdPreview } from "react-icons/md";
-import OrderNavBtns from "./OrderNavBtns.jsx";
+// import OrderNavBtns from "./OrderNavBtns.jsx";
 import { ImForward } from "react-icons/im";
 const PendingOrder = () => {
   const data = [
@@ -58,7 +58,7 @@ const PendingOrder = () => {
 
   return (
     <>
-      <OrderNavBtns />
+      {/* <OrderNavBtns /> */}
       <div>
         {/* <h1 className="text-4xl font-semibold my-5 text-center">Pending Order</h1> */}
         <h1 className="text-4xl font-bold mb-6 text-center">

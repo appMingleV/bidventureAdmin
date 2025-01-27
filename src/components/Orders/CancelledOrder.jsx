@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { MdPreview } from "react-icons/md";
-import OrderNavBtns from "./OrderNavBtns.jsx";
+// import OrderNavBtns from "./OrderNavBtns.jsx";
 import { ImForward } from "react-icons/im";
 const CancelledOrder = () => {
   const data = [
@@ -57,7 +57,7 @@ const CancelledOrder = () => {
 
   return (
     <>
-      <OrderNavBtns />
+      {/* <OrderNavBtns /> */}
       <div>
         {/* <h1 className="text-4xl font-semibold my-5 text-center">Cancelled  Order</h1> */}
         <h1 className="text-4xl font-bold mb-6 text-center">
