@@ -1,45 +1,102 @@
 import React from 'react';
 
 const RestaurantDetails = () => {
+  // Restaurant details and dishes data
+  const restaurantDetails = {
+    name: 'The Barista',
+    mobile: '+91 6201349878',
+    owner: 'Srikant Singh',
+    email: 'srikant23@gmail.com',
+    tagline: 'Quality never goes out of style.',
+    street: 'Noida, Sector 4',
+    bidPrice: '₹1000',
+    city: 'Noida',
+    district: 'Noida',
+    seatingCapacity: 200,
+    eventType: 'Birthday Party',
+  };
+
+  const dishes = [
+    {
+      name: 'Coffee',
+      description: 'A freshly brewed coffee with rich aroma and smooth taste.',
+      price: '₹150',
+      imageUrl: 'https://static.vecteezy.com/system/resources/thumbnails/025/282/026/small/stock-of-mix-a-cup-coffee-latte-more-motive-top-view-foodgraphy-generative-ai-photo.jpg'
+    },
+    {
+      name: 'Pasta',
+      description: 'A creamy pasta with a delicious blend of herbs and spices.',
+      price: '₹300',
+      imageUrl: 'https://media.istockphoto.com/id/155433174/photo/bolognese-pens.jpg?s=612x612&w=0&k=20&c=A_TBqOAzcOkKbeVv8qSDs0bukfAedhkA458JEFolo_M='
+    },
+    {
+      name: 'Burger',
+      description: 'A juicy and tender burger served with crispy fries on the side.',
+      price: '₹250',
+      imageUrl: 'https://t4.ftcdn.net/jpg/02/74/99/01/360_F_274990113_ffVRBygLkLCZAATF9lWymzE6bItMVuH1.jpg'
+    }
+  ];
+
   return (
-    <div className="w-full mx-auto bg-white rounded-lg shadow-lg overflow-hidden p-6 grid grid-cols-6 gap-x-8">
+    <div className="flex justify-center bg-gray-100 min-h-screen py-3">
+      <div className="flex flex-col w-full max-w-5xl">
 
-      
-      <div className="col-span-3 bg-white rounded-lg shadow-lg p-4">
-        <h3 className="text-xl font-semibold text-gray-800">Event Overview:</h3>
-        <p className="text-gray-800 mt-2">
-          Experience a delightful combination of adventure and gastronomy with Bidventure: A Culinary Journey. Our expert chefs and immersive ambiance will guide you through an exciting food and adventure experience.
-        </p>
-        <h3 className="font-semibold mt-4">Event Location:</h3>
-        <p className="text-gray-800 mt-2">Restaurant Name: The Global Feast</p>
-        <p className="text-gray-800">Address: 123 Adventure Lane, Culinary City, 56789</p>
-        <p className="text-gray-800">Contact Number: +123 456 7890</p>
-        <button className="mt-4 w-full py-2 bg-orange-500 text-white rounded-md">Book Event</button>
-      </div>
+        {/* First Card */}
+        <div className="bg-white shadow-2xl rounded-xl p-8 flex flex-col w-full mb-4">
+          <div className="flex flex-wrap gap-4 justify-between">
 
-      
-      <div className="col-span-3 space-y-4 ml-8">
-        
-        {/* User Details Card */}
-        <div className="bg-white rounded-lg shadow-lg p-4">
-          <h3 className="text-xl font-semibold text-gray-800">User Details</h3>
-          <p className="text-gray-800 mt-2">Name: John Doe</p>
-          <p className="text-gray-800">Email: johndoe@example.com</p>
-          <p className="text-gray-800">Address: Optimizaum Infotech, Sector 4, Noida</p>
-          <p className="text-gray-800">Phone: +1234567890</p>
-          <p className="text-lg font-semibold text-green-600 mt-4">Price: ₹1000</p> 
+            {/* Text Section */}
+            <div className="flex flex-col w-2/5 space-y-2">
+              <h3 className="text-2xl font-semibold text-gray-800 ml-96">Details:</h3>
+              <p className="text-xl font-bold text-gray-800 mt-2">{restaurantDetails.name}</p>
+              <ul className="list-disc pl-10 space-y-2 text-lg text-gray-800">
+                {Object.entries(restaurantDetails).map(([key, value]) => {
+                  // Skip name, as it's already printed above
+                  if (key === 'name') return null;
+                  return (
+                    <li key={key}>{`${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}`}</li>
+                  );
+                })}
+              </ul>
+            </div>
+
+            {/* Image Section */}
+            <div className="flex w-2/5 justify-center pt-24">
+              <img
+                src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?cs=srgb&dl=pexels-chanwalrus-941861.jpg&fm=jpg"
+                alt="Restaurant"
+                className="rounded-lg shadow-md w-60 h-72 object-cover"
+              />
+            </div>
+
+          </div>
         </div>
 
-        {/* Restaurant Details Card */}
-        <div className="bg-white rounded-lg shadow-lg p-4">
-          <h2 className="text-2xl font-semibold text-gray-800">Restaurant Details</h2>
-          <p className="text-gray-800 mt-2">Restaurant Name: The Baristo</p>
-          <p className="text-gray-800">Cuisine: French</p>
-          <p className="text-gray-800">Location: 1234 Food Street, City</p>
-          <p className="text-gray-800">Hours: Mon-Sun: 10 AM - 10 PM</p>
-          <p className="text-lg font-semibold text-green-600 mt-4">Price: ₹1000</p> 
+        {/* Second Card for Dishes */}
+        <div className="bg-white shadow-2xl rounded-xl p-8 flex flex-col w-full">
+          <div className="flex flex-wrap gap-4 justify-between">
+            <div className="flex flex-col w-full">
+              <h3 className="text-2xl font-semibold text-gray-800 ml-96">Dishes</h3>
+              <div className="flex gap-6 mt-4">
+                {dishes.map(dish => (
+                  <div key={dish.name} className="bg-gray-50 w-1/3 p-4 rounded-lg shadow-md">
+                    <img
+                      src={dish.imageUrl}
+                      alt={dish.name}
+                      className="w-full h-40 object-cover rounded-lg shadow-sm"
+                    />
+                    <div className="mt-4">
+                      <h4 className="text-lg font-semibold text-gray-800">{dish.name}</h4>
+                      <p className="text-sm text-gray-600">{dish.description}</p>
+                      <p className="text-lg font-bold text-gray-800">{dish.price}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-        
+
       </div>
     </div>
   );

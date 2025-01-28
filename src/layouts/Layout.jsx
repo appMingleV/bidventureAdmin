@@ -88,8 +88,10 @@ import EditSubcategory from '../components/Product/ProductCategory/EditSubcatego
 import RestaurantList from "../components/Orders/RestaurantList.jsx";
 import CustomersHome from "../components/customers/CustomersHome.jsx";
 
-import RestaurantDetails from "../components/Orders/restaurantDetails.jsx";
+import RestaurantDetails from "../components/Orders/RestaurantDetails.jsx";
 import EventDetails from "../components/customers/EventDetails.jsx";
+import UserDetails from "../components/customers/UserDetails.jsx";
+import AllUserDetails from "../components/customers/AllUserDetail.jsx";
 const Layout = () => {
   return (
     <>
@@ -140,6 +142,8 @@ const Layout = () => {
         <Route path="/buyerlist" element={<BuyerListCustomers />} /> */}
         <Route path="/customer-homepage" element={<CustomersHome />} />
         <Route path="/event-details/:id" element={<EventDetails />} />
+        <Route path="/user-details" element={<UserDetails/>}/>
+        <Route path="/alluser-details" element={<AllUserDetails/>}/>
 
 
         
